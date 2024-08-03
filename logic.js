@@ -53,6 +53,7 @@ function playRound(human, computer){
             humanScore++;
             console.log("Player win!");
             console.log("Player score: " + humanScore);
+            console.log("Computer score: " + computerScore);
     }
     else if( (computer == "rock" && human == "scissors") 
           || (computer == "paper" && human == "rock")
@@ -61,6 +62,7 @@ function playRound(human, computer){
             // plusOne on computer point
             computerScore++;
             console.log("Computer win!");
+            console.log("Player score: " + humanScore);
             console.log("Computer score: " + computerScore);
     }
     else{
@@ -68,5 +70,18 @@ function playRound(human, computer){
     } 
 }
 
-playRound(getHumanChoice(),getComputerChoice());
+// create a loop to play 5 games
 
+for(let i = 0; i < 5;i++){
+    playRound(getHumanChoice(),getComputerChoice());  
+}
+
+if(humanScore>computerScore){
+    console.log("Player wins the game!");
+}
+else if(humanScore<computerScore){
+    console.log("Computer wins the game!");
+}
+else{
+    console.log("The game is a draw!");
+}
