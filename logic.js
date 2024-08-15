@@ -19,12 +19,30 @@ function getComputerChoice(){
 var humanScore = 0;
 var computerScore = 0;
 
+const result = document.querySelector(".result");
+
+const playerChoiceText = document.createElement("p");
+const computerChoiceText = document.createElement("p");
+const resultText = document.createElement("p");
+const playerScoreText = document.createElement("p");
+const computerScoreText = document.createElement("p");
+
+result.appendChild(playerChoiceText);
+result.appendChild(computerChoiceText);
+result.appendChild(resultText);
+result.appendChild(playerScoreText);
+result.appendChild(computerScoreText);
+
 function playRound(human, computer){
-    console.log("Player choose " + human);
-    console.log("Computer choose " + computer);
+
+    playerChoiceText.textContent = "Player choose : " + human;
+    computerChoiceText.textContent = "Computer choose : " + computer;
+    // console.log("Player choose " + human);
+    // console.log("Computer choose " + computer);
 
     if(human == computer){
-        console.log("draw");
+        resultText.textContent = "Result : Draw."; 
+        // console.log("draw");
         //score does not change
     }
     else if( (human == "rock" && computer == "scissors") 
@@ -33,9 +51,12 @@ function playRound(human, computer){
             // human win
             // plusOne on human point
             humanScore++;
-            console.log("Player win!");
-            console.log("Player score: " + humanScore);
-            console.log("Computer score: " + computerScore);
+            resultText.textContent = "Result : Player wins the round!";
+            playerScoreText.textContent = "Player Score : " + humanScore;
+            computerScoreText.textContent = "Computer Score : " + computerScore; 
+            // console.log("Player win!");
+            // console.log("Player score: " + humanScore);
+            // console.log("Computer score: " + computerScore);
     }
     else if( (computer == "rock" && human == "scissors") 
           || (computer == "paper" && human == "rock")
@@ -43,9 +64,12 @@ function playRound(human, computer){
             // computer win
             // plusOne on computer point
             computerScore++;
-            console.log("Computer win!");
-            console.log("Player score: " + humanScore);
-            console.log("Computer score: " + computerScore);
+            resultText.textContent = "Result : Computer wins the round!";
+            playerScoreText.textContent = "Player Score : " + humanScore;
+            computerScoreText.textContent = "Computer Score : " + computerScore; 
+            // console.log("Computer win!");
+            // console.log("Player score: " + humanScore);
+            // console.log("Computer score: " + computerScore);
     }
     else{
         console.log("logic error");
