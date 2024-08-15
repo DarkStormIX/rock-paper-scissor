@@ -13,24 +13,6 @@ function getComputerChoice(){
     }
 }
 
-
-// create a function for player to choose one option
-function getHumanChoice(){
-    var humanChoice = prompt("Choose between rock, paper or scissors.");
-    var humanChoice = humanChoice.toLowerCase();
-
-    switch(humanChoice){
-        case "rock":
-            return humanChoice;
-        case "paper":
-            return humanChoice;
-        case "scissors":
-            return humanChoice;
-        default:
-            return "not available";
-    }
-}
-
 // create a logic to play a round
 // need to compare human and computer choice
 // need to give score when someone win a round
@@ -70,18 +52,21 @@ function playRound(human, computer){
     } 
 }
 
-// create a loop to play 5 games
+const selection = document.querySelectorAll(".option");
+// event for getting human choice
+selection.forEach((option) => {
+    option.addEventListener("click",() => {
 
-for(let i = 0; i < 5;i++){
-    playRound(getHumanChoice(),getComputerChoice());  
-}
-
-if(humanScore>computerScore){
-    console.log("Player wins the game!");
-}
-else if(humanScore<computerScore){
-    console.log("Computer wins the game!");
-}
-else{
-    console.log("The game is a draw!");
-}
+        switch(option.textContent){
+            case "Rock":
+                playRound("rock",getComputerChoice());
+                break;
+            case "Paper":
+                playRound("paper",getComputerChoice());
+                break;
+            case "Scissors":
+                playRound("scissors",getComputerChoice());
+                break;
+        }    
+    });
+});
