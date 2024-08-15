@@ -26,23 +26,23 @@ const computerChoiceText = document.createElement("p");
 const resultText = document.createElement("p");
 const playerScoreText = document.createElement("p");
 const computerScoreText = document.createElement("p");
+const finalResultText = document.createElement("p");
+
 
 result.appendChild(playerChoiceText);
 result.appendChild(computerChoiceText);
 result.appendChild(resultText);
 result.appendChild(playerScoreText);
 result.appendChild(computerScoreText);
+result.appendChild(finalResultText);
 
 function playRound(human, computer){
 
     playerChoiceText.textContent = "Player choose : " + human;
     computerChoiceText.textContent = "Computer choose : " + computer;
-    // console.log("Player choose " + human);
-    // console.log("Computer choose " + computer);
 
     if(human == computer){
         resultText.textContent = "Result : Draw."; 
-        // console.log("draw");
         //score does not change
     }
     else if( (human == "rock" && computer == "scissors") 
@@ -54,9 +54,6 @@ function playRound(human, computer){
             resultText.textContent = "Result : Player wins the round!";
             playerScoreText.textContent = "Player Score : " + humanScore;
             computerScoreText.textContent = "Computer Score : " + computerScore; 
-            // console.log("Player win!");
-            // console.log("Player score: " + humanScore);
-            // console.log("Computer score: " + computerScore);
     }
     else if( (computer == "rock" && human == "scissors") 
           || (computer == "paper" && human == "rock")
@@ -67,13 +64,22 @@ function playRound(human, computer){
             resultText.textContent = "Result : Computer wins the round!";
             playerScoreText.textContent = "Player Score : " + humanScore;
             computerScoreText.textContent = "Computer Score : " + computerScore; 
-            // console.log("Computer win!");
-            // console.log("Player score: " + humanScore);
-            // console.log("Computer score: " + computerScore);
     }
     else{
         console.log("logic error");
     } 
+
+    // the first one to win 5 rounds wins the game
+    if(humanScore == 5){
+        finalResultText.textContent = "Player wins the game!";
+    }
+    else if(computerScore == 5){
+        finalResultText.textContent = "Computer wins the game!";
+    }
+    else
+    {
+        finalResultText.textContent = "Continue playing.";
+    }
 }
 
 const selection = document.querySelectorAll(".option");
